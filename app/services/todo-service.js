@@ -2,7 +2,7 @@ import store from "../store.js";
 
 // @ts-ignore
 const todoApi = axios.create({
-  baseURL: "https://bcw-sandbox.herokuapp.com/api/YOURNAME/todos/",
+  baseURL: "https://bcw-sandbox.herokuapp.com/api/jenny/todos/",
   timeout: 8000
 });
 
