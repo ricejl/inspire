@@ -1,4 +1,16 @@
-#todo-error{
+#todo-error {
   color: red;
   font-size: 2em;
+}
+
+#bg-img {
+  min-height: 100vh;
+  background: url("//placehold.it/800x800");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+ul {
+  list-style-type: none;
+  padding-left: 0em;
 }

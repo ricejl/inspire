@@ -16,6 +16,8 @@ class TodoService {
   async addTodoAsync(todo) {
     let res = await todoApi.post("", todo);
     //TODO Handle this response from the server (hint: what data comes back, do you want this?)
+    //I want to convert it to an instance of Todo class and commit to store under todos array. Maybe.
+    console.log("response from posting to sandbox", res);
   }
 
   async toggleTodoStatusAsync(todoId) {

@@ -16,16 +16,33 @@
     <header></header>
 
     <main class="container-fluid">
-      <div class="row">
+      <div class="row pt-3">
         <div id="weather" class="col-3">
           weather template
         </div>
 
         <div class="col-3 offset-6">
-          todo
-          <div id="todo-error"></div>
-          <form onsubmit=""></form>
-          <div id="todos"></div>
+          <div id="todo-error">
+            <!-- TODO use or delete -->
+          </div>
+
+          <!-- SECTION todo -->
+          <div class="card">
+            <div class="card-body">
+              <ul id="todos">
+                <!-- todo template -->
+              </ul>
+              <form onsubmit="app.todoController.addTodoAsync(event)">
+                <input
+                  type="text"
+                  name="todo"
+                  class="form-control"
+                  placeholder="new to do"
+                  required
+                />
+              </form>
+            </div>
+          </div>
         </div>
       </div>
       <div class="row">

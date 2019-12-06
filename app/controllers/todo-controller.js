@@ -10,11 +10,14 @@ export default class TodoController {
     TodoService.getTodos();
   }
 
-  async addTodo(e) {
+  async addTodoAsync(e) {
     e.preventDefault();
-    var form = e.target;
-    var todo = {
-      //TODO build the todo object from the data that comes into this method
+    let form = e.target;
+    console.log("data coming in from form", e.target);
+
+    let todo = {
+      //NOTE where is where you build the todo object from the data that comes into this method
+      description: form.todo.value
     };
     try {
       await TodoService.addTodoAsync(todo);
