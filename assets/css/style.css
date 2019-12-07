@@ -14,3 +14,17 @@ ul {
   list-style-type: none;
   padding-left: 0em;
 }
+
+input[type="checkbox"] {
+  padding-right: 1em;
+}
+
+label[for="todo"] {
+  padding-left: 0.3em;
+  margin-bottom: 0;
+}
+
+input[type="checkbox"]:checked + label {
+  text-decoration: line-through;
+  color: var(--secondary);
+}

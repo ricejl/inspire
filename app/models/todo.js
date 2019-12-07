@@ -8,7 +8,7 @@ export default class Todo {
 
   get Template() {
     return `
-        <li><input type="checkbox" />${this.description}</li>
+        <li><input type="checkbox" /><label for="todo">${this.description}</label></li>
         `;
   }
 }
