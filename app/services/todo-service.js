@@ -1,4 +1,5 @@
 import store from "../store.js";
+import Todo from "../models/todo.js";
 
 // @ts-ignore
 const todoApi = axios.create({
@@ -10,14 +11,13 @@ class TodoService {
   async getTodos() {
     console.log("Getting the Todo List");
     let res = await todoApi.get();
-    //TODO Handle this response from the server
+    let todos = res.data.data.map(todo => new Todo(todo));
+    store.commit("todos", todos);
   }
 
   async addTodoAsync(todo) {
     let res = await todoApi.post("", todo);
-    //TODO Handle this response from the server (hint: what data comes back, do you want this?)
-    //I want to convert it to an instance of Todo class and commit to store under todos array. Maybe.
-    console.log("response from posting to sandbox", res);
+    this.getTodos();
   }
 
   async toggleTodoStatusAsync(todoId) {
