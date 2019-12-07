@@ -28,3 +28,16 @@ input[type="checkbox"]:checked + label {
   text-decoration: line-through;
   color: var(--secondary);
 }
+
+.btn-blank {
+  background: transparent;
+  border: none;
+  outline: none;
+  position: absolute;
+  right: 1.2em;
+  opacity: 0.4;
+}
+
+.btn-blank:hover {
+  opacity: 0.6;
+}
