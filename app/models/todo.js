@@ -10,16 +10,16 @@ export default class Todo {
     let template = "";
     if (this.completed == false) {
       template = `
-        <li><input type="checkbox" onclick="app.todoController.toggleTodoStatus('${this._id}')"/>
+        <li><input type="checkbox" onclick="app.todoController.toggleTodoStatusAsync('${this._id}')"/>
         `;
     } else if (this.completed == true) {
       template = `
-        <li><input type="checkbox" checked onclick="app.todoController.toggleTodoStatus('${this._id}')"/>
+        <li><input type="checkbox" checked onclick="app.todoController.toggleTodoStatusAsync('${this._id}')"/>
         `;
     }
     template += `
         <label for="todo">${this.description}</label>
-        <button class="btn-blank" type="button" onclick="app.todoController.removeTodoAsync(todoId)('${this._id}')">
+        <button class="btn-blank" type="button" onclick="app.todoController.removeTodoAsync('${this._id}')">
             <i class="fa fa-times"></i>
         </button>
         </li>

@@ -11,7 +11,7 @@ function _drawTodos() {
 export default class TodoController {
   constructor() {
     //TODO Remember to register your subscribers
-    TodoService.getTodos();
+    TodoService.getTodosAsync();
     store.subscribe("todos", _drawTodos);
   }
 
@@ -32,7 +32,7 @@ export default class TodoController {
   }
 
   //NOTE This method will pass an Id to your service for the TODO that will need to be toggled
-  async toggleTodoStatus(todoId) {
+  async toggleTodoStatusAsync(todoId) {
     try {
       await TodoService.toggleTodoStatusAsync(todoId);
     } catch (error) {
@@ -42,7 +42,7 @@ export default class TodoController {
   }
 
   //NOTE This method will pass an Id to your service for the TODO that will need to be deleted
-  async removeTodo(todoId) {
+  async removeTodoAsync(todoId) {
     try {
       await TodoService.removeTodoAsync(todoId);
     } catch (error) {

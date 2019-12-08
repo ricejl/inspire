@@ -8,7 +8,7 @@ const todoApi = axios.create({
 });
 
 class TodoService {
-  async getTodos() {
+  async getTodosAsync() {
     console.log("Getting the Todo List");
     let res = await todoApi.get();
     let todos = res.data.data.map(todo => new Todo(todo));
@@ -17,7 +17,8 @@ class TodoService {
 
   async addTodoAsync(todo) {
     let res = await todoApi.post("", todo);
-    this.getTodos();
+    console.log(res);
+    this.getTodosAsync();
   }
 
   async toggleTodoStatusAsync(todoId) {
@@ -40,15 +41,32 @@ class TodoService {
 
     let res = await todoApi.put(todoId, todo);
     //TODO do you care about this data? or should you go get something else?
-    //TODO get number of items incomplete and print number to page via controller
     console.log("response from put request for todo complete/incomplete", res);
-    this.getTodos();
+    this.getTodosAsync();
+    //TODO get number of items incomplete and print number to page via controller
+
+    // function countNumIncompleteTodos() {
+    //   let numTodosIncomplete = 0;
+    //   for (let i = 0; i < store.State.todos.length; i++) {
+    //     if (!todo.completed) {
+    //       // debugger;
+    //       numTodosIncomplete++;
+    //     }
+    //   }
+    //   return numTodosIncomplete;
+    // }
+
+    // console.log("number of incomplete todos");
+    // FIXME refactor incomplete todo counter
+    //TODO post to sandbox so it will draw to page
   }
 
   async removeTodoAsync(todoId) {
-    //TODO Work through this one on your own
-    //		what is the request type
-    //		once the response comes back, what do you need to insure happens?
+    let deleteTodo = store.State.todos.find(todo => todoId == todo._id);
+    console.log("todo to delete", deleteTodo);
+    let res = await todoApi.delete(deleteTodo._id);
+    console.log(res);
+    this.getTodosAsync();
   }
 }
 
