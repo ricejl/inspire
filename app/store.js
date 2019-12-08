@@ -5,7 +5,8 @@ let _state = {
   /**@type {Weather} */
   weather: new Weather({ name: "loading", main: { temp: 0.0 } }), //temporary fake data
   /**@type {Todo[]}*/
-  todos: []
+  todos: [],
+  image: {}
 };
 
 /** Collection of listeners to be called based on keyed state changes
@@ -13,7 +14,8 @@ let _state = {
  */
 let _listeners = {
   weather: [],
-  todos: []
+  todos: [],
+  image: []
 };
 
 /**
