@@ -8,6 +8,9 @@ const todoApi = axios.create({
 });
 
 class TodoService {
+  constructor() {
+    this.getTodosAsync();
+  }
   async getTodosAsync() {
     console.log("Getting the Todo List");
     let res = await todoApi.get();
