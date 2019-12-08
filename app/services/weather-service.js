@@ -8,9 +8,14 @@ const weatherApi = axios.create({
 });
 
 class WeatherService {
-  async getWeather() {
+  async getWeatherAsync() {
     console.log("Calling the Weatherman");
     let res = await weatherApi.get();
+    // get weather by id
+    console.log("drilling down to icon", res.data.weather[0].id);
+    let resWeather = await weatherApi.get("", res.data.weather[0].id);
+    console.log("finding weather by id", resWeather);
+
     store.commit("weather", new Weather(res.data));
   }
 }

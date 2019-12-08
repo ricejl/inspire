@@ -5,12 +5,13 @@ import store from "../store.js";
 //		you may wish to check out the model and include some additional data.
 
 //TODO Complete rendering data to the screen
-function drawWeather() {
-  console.log("THE WEATHER MAN SAYS:", store.State.weather);
+function _drawWeather() {
+  // console.log("THE WEATHER MAN SAYS:", store.State.weather);
+  document.getElementById("weather").innerHTML = store.State.weather.Template;
 }
 export default class WeatherController {
   constructor() {
-    store.subscribe("weather", drawWeather);
-    WeatherService.getWeather();
+    store.subscribe("weather", _drawWeather);
+    WeatherService.getWeatherAsync();
   }
 }

@@ -10,7 +10,6 @@ function _drawImage() {
 }
 export default class ImageController {
   constructor() {
-    // remember to subscribe and to call drawImage on page load
     store.subscribe("image", _drawImage);
     imageService.getImageAsync();
   }
