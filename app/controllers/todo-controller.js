@@ -8,11 +8,25 @@ function _drawTodos() {
   document.getElementById("todos").innerHTML = template;
 }
 
+function _drawIncompleteTodos() {
+  let incompleteTodos = store.State.incompleteTodos.toString();
+  console.log("incomplete todos in draw fn", incompleteTodos);
+  document.getElementById(
+    "incomplete-todos"
+  ).innerHTML = store.State.incompleteTodos.toString();
+}
+// FIXME this is not being called - console logs show up for drawTodos fn but not drawIncompleteTodos
+// After calling it directly in constructor it displays as [object Object on page], probably bc it's not explicitly stored in sandbox and incomplete/complete fn needs time to process since it depends on api
+
+//make draw fn for incomplete todos and register subscriber
+
 export default class TodoController {
   constructor() {
     //TODO Remember to register your subscribers
     TodoService.getTodosAsync();
     store.subscribe("todos", _drawTodos);
+    store.subscribe("incompleteTodos", _drawIncompleteTodos);
+    // _drawIncompleteTodos();
   }
 
   async addTodoAsync(e) {
@@ -38,6 +52,14 @@ export default class TodoController {
     } catch (error) {
       debugger;
       console.error("[ERROR]:", error);
+    }
+  }
+
+  async numIncompleteTodosAsync() {
+    try {
+      await TodoService.numIncompleteTodosAsync();
+    } catch (error) {
+      console.error("[ERROR}:", error);
     }
   }
 

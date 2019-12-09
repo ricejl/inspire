@@ -7,6 +7,7 @@ let _state = {
   weather: new Weather({ name: "loading", main: { temp: 0.0 } }), //temporary fake data
   /**@type {Todo[]}*/
   todos: [],
+  incompleteTodos: {},
   image: {},
   quote: {}
 };
@@ -17,6 +18,7 @@ let _state = {
 let _listeners = {
   weather: [],
   todos: [],
+  incompleteTodos: [],
   image: [],
   quote: []
 };

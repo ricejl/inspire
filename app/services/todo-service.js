@@ -10,6 +10,8 @@ const todoApi = axios.create({
 class TodoService {
   constructor() {
     this.getTodosAsync();
+    this.numIncompleteTodosAsync();
+    //FIXME getTodos is being called in the constructor of both service and controller. Is this necessary?
   }
   async getTodosAsync() {
     console.log("Getting the Todo List");
@@ -47,22 +49,16 @@ class TodoService {
     //TODO do you care about this data? or should you go get something else?
     console.log("response from put request for todo complete/incomplete", res);
     this.getTodosAsync();
-    //TODO get number of items incomplete and print number to page via controller
+    console.log("store within todo toggler", store.State.todos);
+    this.numIncompleteTodosAsync();
+  }
 
-    // function countNumIncompleteTodos() {
-    //   let numTodosIncomplete = 0;
-    //   for (let i = 0; i < store.State.todos.length; i++) {
-    //     if (!todo.completed) {
-    //       // debugger;
-    //       numTodosIncomplete++;
-    //     }
-    //   }
-    //   return numTodosIncomplete;
-    // }
-
-    // console.log("number of incomplete todos");
-    // FIXME refactor incomplete todo counter
-    //TODO post to sandbox so it will draw to page
+  async numIncompleteTodosAsync() {
+    await this.getTodosAsync();
+    let incompleteTodos = store.State.todos.filter(todo => !todo.completed);
+    console.log("num incomplete todos", incompleteTodos.length);
+    store.State.incompleteTodos = incompleteTodos.length;
+    console.log("updated store incomplete todos", store.State.incompleteTodos);
   }
 
   async removeTodoAsync(todoId) {
