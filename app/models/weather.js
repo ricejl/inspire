@@ -26,7 +26,7 @@ export default class Weather {
         <div class="media p-2 bg-dark-transparent text-white">
           <img src="" class="mr-3" alt="..." />
           <div class="media-body">
-            <h4 class="mt-0">${this.fahrenheit}&#8457 | ${this.celsius} &#8451</h4>
+            <h4 class="mt-0">${this.fahrenheit}&#8457 | ${this.celsius}&#8451</h4>
             Forecast
           </div>
         </div>
