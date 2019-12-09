@@ -25,7 +25,6 @@ class TodoService {
     console.log(res);
     this.getTodosAsync();
   }
-  // FIXME clear form to reset placeholder after adding todo
 
   async toggleTodoStatusAsync(todoId) {
     let todo = store.State.todos.find(todo => todo._id == todoId);

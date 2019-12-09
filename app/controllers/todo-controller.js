@@ -37,6 +37,7 @@ export default class TodoController {
       //NOTE where is where you build the todo object from the data that comes into this method
       description: form.todo.value
     };
+    form.reset();
     try {
       await TodoService.addTodoAsync(todo);
     } catch (error) {
