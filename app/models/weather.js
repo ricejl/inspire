@@ -10,9 +10,9 @@ export default class Weather {
     this.kelvin = data.main.temp;
     this.celsius = Math.round(data.main.temp - 273.15);
     this.fahrenheit = Math.round((9 / 5) * (data.main.temp - 273.15) + 32);
+    this.icon = data.weather[0].icon;
+    this.main = data.weather[0].main;
     // this.description = data.weather[0].description;
-    // this.icon = data.weather[0].icon;
-    // celsius degrees &#8451
 
     //data.weather[description icon id main]
     // FIXME drill down into weather section of data; may have to make another get request
@@ -24,10 +24,10 @@ export default class Weather {
           <h6 class="media-body pl-2">${this.city}</h6>
         </div>
         <div class="media p-2 bg-dark-transparent text-white">
-          <img src="" class="mr-3" alt="..." />
+          <img src="http://openweathermap.org/img/wn/${this.icon}@2x.png" class="mr-3 icon-styling" alt="..." />
           <div class="media-body">
             <h4 class="mt-0">${this.fahrenheit}&#8457 | ${this.celsius}&#8451</h4>
-            Forecast
+            ${this.main}
           </div>
         </div>
     `;

@@ -9,9 +9,7 @@ const todoApi = axios.create({
 
 class TodoService {
   constructor() {
-    this.getTodosAsync();
     this.numIncompleteTodosAsync();
-    //FIXME getTodos is being called in the constructor of both service and controller. Is this necessary?
   }
   async getTodosAsync() {
     console.log("Getting the Todo List");
@@ -32,15 +30,15 @@ class TodoService {
     //TODO Make sure that you found a todo,
     //		and if you did find one
     //		change its completed status to whatever it is not (ex: false => true or true => false)
-    if (todo.completed == false) {
-      todo.completed = true;
-    } else if (todo.completed == true) {
-      todo.completed = false;
-    }
-    // FIXME how can I express this as a ternary?
-    // todo.completed == false ? todo.completed = true :
-    // todo.completed == true ? todo.completed = false
-    // FIXME possible to use .checked? How?
+    todo.completed = !todo.completed;
+
+    // if (todo.completed == false) {
+    //   todo.completed = true;
+    // } else if (todo.completed == true) {
+    //   todo.completed = false;
+    // }
+
+    // NOTE possible to use .checked? How? must get controller to get this info and pass it down. service doesn't have access to the DOM (or it shouldn't)
     // let completeStatus = document.getElementById("check").checked;
     // console.log("checked?", completeStatus);
 
@@ -56,7 +54,7 @@ class TodoService {
     await this.getTodosAsync();
     let incompleteTodos = store.State.todos.filter(todo => !todo.completed);
     console.log("num incomplete todos", incompleteTodos.length);
-    store.State.incompleteTodos = incompleteTodos.length;
+    store.commit("incompleteTodos", incompleteTodos.length);
     console.log("updated store incomplete todos", store.State.incompleteTodos);
   }
 

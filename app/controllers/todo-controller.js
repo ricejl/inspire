@@ -15,18 +15,14 @@ function _drawIncompleteTodos() {
     "incomplete-todos"
   ).innerHTML = store.State.incompleteTodos.toString();
 }
-// FIXME this is not being called - console logs show up for drawTodos fn but not drawIncompleteTodos
-// After calling it directly in constructor it displays as [object Object on page], probably bc it's not explicitly stored in sandbox and incomplete/complete fn needs time to process since it depends on api
-
-//make draw fn for incomplete todos and register subscriber
 
 export default class TodoController {
   constructor() {
     //TODO Remember to register your subscribers
-    TodoService.getTodosAsync();
     store.subscribe("todos", _drawTodos);
+    TodoService.getTodosAsync();
+    // NOTE must subscribe first, then get data
     store.subscribe("incompleteTodos", _drawIncompleteTodos);
-    // _drawIncompleteTodos();
   }
 
   async addTodoAsync(e) {

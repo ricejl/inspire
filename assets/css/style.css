@@ -3,9 +3,8 @@
   font-size: 2em;
 }
 
-#bg-img {
+body {
   min-height: 100vh;
-  background: url("//placehold.it/800x800");
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -55,4 +54,8 @@ input[type="checkbox"]:checked + label {
 
 .btn-blank:hover {
   opacity: 0.6;
+}
+
+.icon-styling {
+  max-width: 5vw;
 }

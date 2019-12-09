@@ -12,8 +12,8 @@ class WeatherService {
     console.log("Calling the Weatherman");
     let res = await weatherApi.get();
     // get weather by id
-    console.log("drilling down to icon", res.data.weather[0].id);
-    let resWeather = await weatherApi.get("", res.data.weather[0].id);
+    console.log("drilling down to icon", res.data.weather[0].icon);
+    let resWeather = await weatherApi.get("", res.data.weather[0]);
     console.log("finding weather by id", resWeather);
 
     store.commit("weather", new Weather(res.data));
